@@ -51,6 +51,8 @@ class _RPCClientRaw:
         await self._write(req_str)
 
     async def _read(self):
+        if self._reader is None:
+            raise ConnectionError("Connection to {} was not opened before writing".format(self.host))
         return await self._reader.readuntil(separator=END_OF_MESSAGE)
 
     async def receive(self) -> ET.Element:

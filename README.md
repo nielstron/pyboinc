@@ -4,7 +4,7 @@
 [![Package Version](https://img.shields.io/pypi/v/pyboinc)](https://pypi.org/project/PySyncThru/)
 [![Python Versions](https://img.shields.io/pypi/pyversions/pyboinc.svg)](https://pypi.org/project/PySyncThru/)
 
-A very basic package to connect to a [BOINC](https://boinc.berkeley.edu/) client in a pythonic way
+A very basic package to connect to a [BOINC](https://boinc.berkeley.edu/) client in a pythonic way using asyncio
 based on the [BOINC GUI RPC Protocol](https://boinc.berkeley.edu/trac/wiki/GuiRpcProtocol).
 
 ## Usage
