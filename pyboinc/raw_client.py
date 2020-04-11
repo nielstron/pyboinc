@@ -57,13 +57,12 @@ class _RPCClientRaw:
         """
         Receive the next message by the RPC server
         """
-        resp = await self._read()
-        try:
-            assert resp[-1] == END_OF_MESSAGE
-        except AssertionError:
-            raise ConnectionError("Got invalid response from {}".format(self.host))
+        buff = [await self._read()]
+        while buff[-1][-1] != END_OF_MESSAGE[0]:
+            buff.append(await self._read())
+        resp = "".join(str(b, encoding=BOINC_ENCODING) for b in buff)
         # remove end of message chraracter
-        resp = str(resp[:-1], encoding=BOINC_ENCODING)
+        resp = resp[:-1]
         # and parse xml
         resp_e = ET.fromstring(resp)
         try:
@@ -72,4 +71,10 @@ class _RPCClientRaw:
             raise ConnectionError("Got invalid response from {}".format(self.host))
         return resp_e[0]
 
+    async def request(self, request: ET.Element):
+        """
+        Send request to server and return reply
+        """
+        await self.send(request)
+        return await self.receive()
 
