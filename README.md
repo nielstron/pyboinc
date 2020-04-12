@@ -6,6 +6,7 @@
 
 A very basic package to connect to a [BOINC](https://boinc.berkeley.edu/) client in a pythonic way using asyncio
 based on the [BOINC GUI RPC Protocol](https://boinc.berkeley.edu/trac/wiki/GuiRpcProtocol).
+The Interface is primarily meant for controlling a BOINC Client and hence does not support all features of the protocol.
 
 ## Usage
 

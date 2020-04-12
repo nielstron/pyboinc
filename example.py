@@ -11,10 +11,9 @@ async def main():
 
     # Get status of current and older tasks
     results = await rpc_client.get_results()
-    results_d = [xml_to_dict(result) for result in results]
-    print(results_d)
+    print(results)
     print(await rpc_client.get_project_status())
-    print(await rpc_client.get_old_results())
+    print(await rpc_client.get_cc_status())
 
     # Get last three messages
     c = await rpc_client.get_message_count()
@@ -24,7 +23,7 @@ async def main():
     print(await rpc_client.get_notices_public(2))
 
     # suspend task and resume
-    task = (results_d[0]["project_url"], results_d[0]["name"])
+    task = (results[0]["project_url"], results[0]["name"])
     print(await rpc_client.suspend_result(*task))
     print(await rpc_client.resume_result(*task))
 

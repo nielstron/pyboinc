@@ -13,7 +13,7 @@ from socket import AF_INET
 import xml.etree.ElementTree as ET
 
 
-GUI_RPC_PORT = 31416
+GUI_RPC_DEFAULT_PORT = 31416
 REPLY_TAG = "boinc_gui_rpc_reply"
 REQUEST_TAG = "boinc_gui_rpc_request"
 END_OF_MESSAGE = b"\x03"
@@ -26,12 +26,13 @@ class _RPCClientRaw:
     Takes and returns XML Element objects
     """
 
-    def __init__(self, host: str):
+    def __init__(self, host: str, port=GUI_RPC_DEFAULT_PORT):
         self.host = host
+        self.port = port
         self._reader = self._writer = None
 
     async def connect(self):
-        self._reader, self._writer = await asyncio.open_connection(self.host, GUI_RPC_PORT, family=AF_INET)
+        self._reader, self._writer = await asyncio.open_connection(self.host, self.port, family=AF_INET)
 
     async def _write(self, message: bytes):
         if self._writer is None:
