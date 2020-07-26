@@ -1,8 +1,6 @@
 # PyBOINC - a very basic python BOINC bridge
-[![Build Status](https://travis-ci.com/nielstron/pyboinc.svg?branch=master)](https://travis-ci.com/nielstron/pyboinc)
-[![Coverage Status](https://coveralls.io/repos/github/nielstron/pyboinc/badge.svg?branch=master)](https://coveralls.io/github/nielstron/pyboinc?branch=master)
-[![Package Version](https://img.shields.io/pypi/v/pyboinc)](https://pypi.org/project/PySyncThru/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/pyboinc.svg)](https://pypi.org/project/PySyncThru/)
+[![Build Status](https://travis-ci.com/nielstron/pyboinc.svg?branch=dev)](https://travis-ci.com/nielstron/pyboinc)
+[![Coverage Status](https://coveralls.io/repos/github/nielstron/pyboinc/badge.svg?branch=dev)](https://coveralls.io/github/nielstron/pyboinc?branch=dev)
 
 A very basic package to connect to a [BOINC](https://boinc.berkeley.edu/) client in a pythonic way using asyncio
 based on the [BOINC GUI RPC Protocol](https://boinc.berkeley.edu/trac/wiki/GuiRpcProtocol).
