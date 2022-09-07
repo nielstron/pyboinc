@@ -32,7 +32,7 @@ class _RPCClientRaw:
         self._reader = self._writer = None
 
     async def connect(self):
-        self._reader, self._writer = await asyncio.open_connection(self.host, self.port, family=AF_INET)
+        self._reader, self._writer = await asyncio.open_connection(self.host, self.port, family=AF_INET, limit=1024*5000)
 
     async def _write(self, message: bytes):
         if self._writer is None:
