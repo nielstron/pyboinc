@@ -19,6 +19,9 @@ PASSWORD_BOINC = "example_password"
 
 async def main():
     rpc_client = await init_rpc_client(IP_BOINC, PASSWORD_BOINC)
+    
+    # Authorize client if you will be using RPC commands which require it
+    # authorize = rpc_client = await rpc_client.authorize()
 
     # Get status of current and older tasks
     results = await rpc_client.get_results()
