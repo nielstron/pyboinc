@@ -204,7 +204,7 @@ class RPCClient:
         """
         req = ET.Element(Tag.SET_RUN_MODE)
         ET.SubElement(req, mode.value)
-        a = ET.SubElement(req, duration)
+        a = ET.SubElement(req, str(duration))
         a.text = str(duration)
         return await self._request_auth(req)
 
@@ -215,7 +215,7 @@ class RPCClient:
         """
         req = ET.Element(Tag.SET_NETWORK_MODE)
         ET.SubElement(req, mode.value)
-        a = ET.SubElement(req, duration)
+        a = ET.SubElement(req, str(duration))
         a.text = str(duration)
         return await self._request_auth(req)
 
@@ -226,6 +226,6 @@ class RPCClient:
         """
         req = ET.Element(Tag.SET_GPU_MODE)
         ET.SubElement(req, mode.value)
-        a = ET.SubElement(req, duration)
+        a = ET.SubElement(req, str(duration))
         a.text = str(duration)
         return await self._request_auth(req)
